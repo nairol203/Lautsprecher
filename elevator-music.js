@@ -42,8 +42,17 @@ module.exports = client => {
 						'Bonez MC',
 						'187 Strassenbande',
 						'The Weeknd',
-						'Juice Wrld',
+						'Juice WRLD',
 						'Freakso',
+						'Selphius',
+						'KD/A',
+						'TWICE',
+						'NF',
+						'Alligatoah',
+						'GReeeN',
+						'Rass Limit',
+						'Machine Gun Kelly',
+						'Our Last Night',
 					];
 					const randomArtist = messages[Math.floor(Math.random() * messages.length)];
 					client.user.setActivity(randomArtist, { type : 'LISTENING' });
