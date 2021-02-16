@@ -1,6 +1,6 @@
 const ytdl = require('ytdl-core');
 
-const ytSong = 'https://www.youtube.com/watch?v=IH6C3-GUai8';
+const ytSong = 'https://www.youtube.com/watch?v=K7y4JjaLoc4';
 const elevatorChannel = '771888890193772575';
 
 module.exports = client => {
@@ -19,17 +19,18 @@ module.exports = client => {
 					catch (error) {
 						console.log(error);
 					}
-
-					const dispatcher = connection.play(ytdl(ytSong))
-						.on('finish', () => {
-							connection.play(ytdl(ytSong));
-						})
-						.on('error', error => {
-							console.log(error);
-						});
-					dispatcher.setVolumeLogarithmic(1 / 5);
-					client.user.setActivity('Farstuhlmusik ab', { type : 'PLAYING' });
-
+					const playMusic = () => {
+						const dispatcher = connection.play(ytdl(ytSong))
+							.on('finish', () => {
+								playMusic();
+							})
+							.on('error', error => {
+								console.log(error);
+							});
+						dispatcher.setVolumeLogarithmic(1 / 5);
+					};
+					playMusic();
+					await client.user.setActivity('Farstuhlmusik ab', { type : 'PLAYING' });
 				}
 				else if (voiceChannel.members.size === 1) {
 					voiceChannel.leave(1000);
@@ -58,7 +59,7 @@ module.exports = client => {
 						];
 						const randomArtist = messages[Math.floor(Math.random() * messages.length)];
 						client.user.setActivity(randomArtist, { type : 'LISTENING' });
-						setTimeout(setRandomArtist, 1000);
+						setTimeout(setRandomArtist, 1000 * 60 * 2);
 					};
 					setRandomArtist();
 				}
