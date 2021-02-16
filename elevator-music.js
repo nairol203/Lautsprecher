@@ -1,6 +1,6 @@
 const ytdl = require('ytdl-core');
 
-const ytSong = 'https://www.youtube.com/watch?v=K7y4JjaLoc4';
+const ytSong = 'https://www.youtube.com/watch?v=IH6C3-GUai8';
 const elevatorChannel = '771888890193772575';
 
 module.exports = client => {
