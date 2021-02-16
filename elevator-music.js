@@ -33,29 +33,34 @@ module.exports = client => {
 				}
 				else if (voiceChannel.members.size === 1) {
 					voiceChannel.leave(1000);
-					const messages = [
-						'Ufo361',
-						'Lil Peep',
-						'Edo Saiya',
-						'KASIMIR1441',
-						'Gzuz',
-						'Bonez MC',
-						'187 Strassenbande',
-						'The Weeknd',
-						'Juice WRLD',
-						'Freakso',
-						'Selphius',
-						'KD/A',
-						'TWICE',
-						'NF',
-						'Alligatoah',
-						'GReeeN',
-						'Rass Limit',
-						'Machine Gun Kelly',
-						'Our Last Night',
-					];
-					const randomArtist = messages[Math.floor(Math.random() * messages.length)];
-					client.user.setActivity(randomArtist, { type : 'LISTENING' });
+
+					const setRandomArtist = () => {
+						const messages = [
+							'Ufo361',
+							'Lil Peep',
+							'Edo Saiya',
+							'KASIMIR1441',
+							'Gzuz',
+							'Bonez MC',
+							'187 Strassenbande',
+							'The Weeknd',
+							'Juice WRLD',
+							'Freakso',
+							'Selphius',
+							'KD/A',
+							'TWICE',
+							'NF',
+							'Alligatoah',
+							'GReeeN',
+							'Rass Limit',
+							'Machine Gun Kelly',
+							'Our Last Night',
+						];
+						const randomArtist = messages[Math.floor(Math.random() * messages.length)];
+						client.user.setActivity(randomArtist, { type : 'LISTENING' });
+						setTimeout(setRandomArtist, 1000);
+					};
+					setRandomArtist();
 				}
 			}
 		}
