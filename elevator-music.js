@@ -11,6 +11,7 @@ module.exports = client => {
 			const voiceChannel = newState.guild.channels.cache.get(elevatorChannel);
 
 			if (oldVoice != newVoice) {
+				if (voiceChannel.members.size > 1) return;
 				if (oldVoice !== elevatorChannel) {
 					try {
 						// eslint-disable-next-line no-var
