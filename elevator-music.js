@@ -21,7 +21,10 @@ module.exports = client => {
 						console.log(error);
 					}
 					const playMusic = () => {
-						const dispatcher = connection.play(ytdl(ytSong))
+						const dispatcher = connection.play(ytdl(ytSong, {
+							quality: 'highestaudio',
+							highWaterMark: 1 << 25,
+						}))
 							.on('finish', () => {
 								playMusic();
 							})
